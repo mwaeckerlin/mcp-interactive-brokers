@@ -269,8 +269,6 @@ export class IBClient {
 
   /** Search for instruments by symbol or name. */
   async searchSecurities(symbol: string, secType?: string, name = false): Promise<SecuritySearchResult[]> {
-    const params = new URLSearchParams({ symbol, name: String(name) });
-    if (secType) params.append('secType', secType);
     return this.post<SecuritySearchResult[]>(`/v1/api/iserver/secdef/search`, { symbol, name, secType });
   }
 
